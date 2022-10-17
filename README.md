@@ -1,38 +1,39 @@
 # Demo deployment using ECS and Fargate Spot
 
-- Assumption 
--- Model is trained and stored in S3
--- Docker image is stored in ECR. e.g. Public ECR : https://gallery.ecr.aws/o8u9e4v2
+*Assumption*
 
-Instructions on how to run the Container
+- Model is trained and stored in S3
+- Docker image is stored in ECR. e.g. Public ECR : https://gallery.ecr.aws/o8u9e4v2
+
+# Instructions on how to deploy/run the Container
 
 ## Create AWS ECS Cluster and Task
 
-1. Go to ECS and click create cluster
+1. Go to ECS and click ```create cluster```
 
-2. Give an name and leave network and other settings as is
+2. Give an ```name```and leave network and other settings as is
 
-3. Hit 'Create'
+3. Hit ```Create```
 
-Your cluster is automatically configured for AWS Fargate (serverless) with two capacity providers. Add Amazon EC2 instances, or external instances using ECS Anywhere.
+- Your cluster is automatically configured for AWS Fargate (serverless) with two capacity providers. Add Amazon EC2 instances, or external instances using ECS Anywhere.
 
-If fails, logout login again create.
+- If fails, logout login again create.
 
 Note : Till here there is no services deployed or task running on clusters.
 
-4. Next, Create a Task Definition under ECS
+4. Next, Create a ```Task Definition``` under ECS
 
-Go to ECS--> Task Definition -> Create new Task Definition
+- Go to ECS--> Task Definition -> Create new Task Definition
 
-5. Give name to task e.g. CifarInferenceTask
+5. Give ```name to task``` e.g. CifarInferenceTask
 
-6. Give name to repo, and get URI of repo and paste in Image URI, Get repo URI from ECR as see below
+6. Give ```name to repo```, and get URI of repo and ```paste in Image URI```, Get repo URI from ECR as see below
 
-7. Change / add port e.g. 7860 if required
+7. Change / add port e.g. 80 if required
 
-8. Env variables, if any
+8. ```Env variables```, if any
 
-9. Specify the task size CPU, Memory as required by app
+9. Specify the task size ```CPU, Memory``` as required by app
 
 10. Task roles (Using S3 on Fargate will require a role to access S3 in Task Definition), network mode 
 
